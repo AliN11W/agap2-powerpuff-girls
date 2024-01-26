@@ -1,23 +1,20 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../store";
-import { fetchShow } from "../actions/showAction";
 import sanitizeHtml from "sanitize-html";
 import { Badge, Card, Col, Row } from "react-bootstrap";
+import { AppDispatch, RootState } from "../redux/store";
+import { fetchShow } from "../redux/show/showActions";
+import { fetchEpisodes } from "../redux/episodes/episodeActions";
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
-  const { show, loading, error } = useSelector(
-    (state: RootState) => state.show
-  );
+  const { show, loading } = useSelector((state: RootState) => state.show);
+  const { episodes } = useSelector((state: RootState) => state.episodes);
 
   useEffect(() => {
     dispatch(fetchShow());
+    dispatch(fetchEpisodes());
   }, [dispatch]);
-
-  useEffect(() => {
-    console.log(show, error, loading);
-  }, [show, error, loading]);
 
   return (
     <div>

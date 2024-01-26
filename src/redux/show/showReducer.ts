@@ -1,5 +1,5 @@
-import { ShowActionTypes } from "../actions/showAction";
-import { Show } from "../types";
+import { Show } from "../../types";
+import { ShowActionTypes } from "./showTypes";
 
 const initialState: {
   show: Show | null;
@@ -9,7 +9,7 @@ const initialState: {
 
 export const showReducer = (state = initialState, action: ShowActionTypes) => {
   switch (action.type) {
-    case 'FETCH_SHOW_BEGIN':
+    case 'FETCH_SHOW_REQUEST':
       return { ...state, loading: true, error: null };
     case 'FETCH_SHOW_SUCCESS':
       return { ...state, loading: false, show: action.payload };

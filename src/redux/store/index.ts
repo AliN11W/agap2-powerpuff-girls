@@ -1,9 +1,11 @@
 import { applyMiddleware, combineReducers } from 'redux';
-import { showReducer } from '../reducers/showReducer';
 import { configureStore } from '@reduxjs/toolkit';
+import { showReducer } from '../show/showReducer';
+import { episodesReducer } from '../episodes/episodeReducer';
 
 const rootReducer = combineReducers({
-  show: showReducer
+  show: showReducer,
+  episodes: episodesReducer
 });
 
 export const store = configureStore({
