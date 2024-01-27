@@ -1,4 +1,4 @@
-import { useEffect, useLayoutEffect } from 'react';
+import { useEffect } from "react";
 
 const usePreserveScroll = (key: string) => {
   useEffect(() => {
@@ -6,6 +6,7 @@ const usePreserveScroll = (key: string) => {
     const savedScrollPosition = sessionStorage.getItem(key);
 
     if (savedScrollPosition) {
+      // Use setTimeout to avoid scroll jump
       setTimeout(() => {
         window.scrollTo(0, parseInt(savedScrollPosition, 10));
       }, 0);
@@ -15,10 +16,10 @@ const usePreserveScroll = (key: string) => {
       sessionStorage.setItem(key, window.scrollY.toString());
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => {
       // Cleanup
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener("scroll", handleScroll);
     };
   }, [key]);
 };
