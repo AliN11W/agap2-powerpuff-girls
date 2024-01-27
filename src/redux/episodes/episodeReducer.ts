@@ -1,7 +1,7 @@
 import { EpisodesActionTypes, EpisodesState, FETCH_EPISODES_FAILURE, FETCH_EPISODES_REQUEST, FETCH_EPISODES_SUCCESS } from "./episodeTypes";
 
 const initialState: EpisodesState = {
-  episodes: [],
+  episodes: null,
   loading: false,
   error: null,
 };
@@ -13,7 +13,7 @@ export const episodesReducer = (state = initialState, action: EpisodesActionType
     case FETCH_EPISODES_SUCCESS:
       return { ...state, episodes: action.payload, loading: false };
     case FETCH_EPISODES_FAILURE:
-      return { ...state, error: action.payload, loading: false };
+      return { ...state, error: action.payload, loading: false, episodes: null };
     default:
       return state;
   }

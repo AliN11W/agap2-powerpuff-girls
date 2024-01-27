@@ -1,5 +1,4 @@
-import { Show } from "../../types";
-import { ShowActionTypes } from "./showTypes";
+import { Show, ShowActionTypes } from "./showTypes";
 
 const initialState: {
   show: Show | null;

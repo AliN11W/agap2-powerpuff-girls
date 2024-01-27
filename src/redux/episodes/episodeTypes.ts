@@ -19,7 +19,7 @@ export interface FetchEpisodesFailureAction {
 export type EpisodesActionTypes = FetchEpisodesRequestAction | FetchEpisodesSuccessAction | FetchEpisodesFailureAction;
 
 export interface EpisodesState {
-  episodes: Episode[];
+  episodes: null | Episode[];
   loading: boolean;
   error: string | null;
 }

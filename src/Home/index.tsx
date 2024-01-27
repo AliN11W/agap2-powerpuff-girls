@@ -10,6 +10,7 @@ import styles from "./styles.module.css";
 import Masonry from "react-masonry-css";
 import Sticky from "react-stickynode";
 import SeeMore from "../components/SeeMore";
+import { Link } from "react-router-dom";
 
 const breakpointColumnsObj = {
   default: 3,
@@ -107,12 +108,12 @@ export default function Home() {
                                   ),
                                 }}
                               ></p>
-                              <Button
-                                className="w-100"
-                                variant="outline-primary"
+                              <Link
+                                to={`/episode/${episode.id}`}
+                                className="btn btn-primary btn-sm"
                               >
-                                Go somewhere
-                              </Button>
+                                View Episode
+                              </Link>
                             </Card.Body>
                           </Card>
                         </div>

@@ -1,9 +1,16 @@
 import { Dispatch } from 'redux';
 import { API_URL } from '../../constants';
 import { FETCH_EPISODES_FAILURE, FETCH_EPISODES_REQUEST, FETCH_EPISODES_SUCCESS } from './episodeTypes';
+import { RootState } from '../store';
 
 export const fetchEpisodes = () => {
-  return async (dispatch: Dispatch) => {
+  return async (dispatch: Dispatch, getState: () => RootState) => {
+    const { episodes: episodeState } = getState();
+
+    if (episodeState.episodes) {
+      dispatch({ type: FETCH_EPISODES_SUCCESS, payload: episodeState.episodes });
+      return;
+    }
     dispatch({ type: FETCH_EPISODES_REQUEST });
     try {
       const episodes = await fetch(`${API_URL}/shows/6771/episodes`);
