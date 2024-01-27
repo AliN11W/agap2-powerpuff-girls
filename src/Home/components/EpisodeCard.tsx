@@ -4,6 +4,7 @@ import { Episode } from "../../redux/episodes/episodesTypes";
 import { limitText } from "../../utils/string";
 import sanitizeHtml from "sanitize-html";
 import { Link } from "react-router-dom";
+import styles from "../styles.module.css";
 
 export default function EpisodeCard({ episode }: { episode: Episode }) {
   return (
@@ -12,7 +13,7 @@ export default function EpisodeCard({ episode }: { episode: Episode }) {
         <Card.Img variant="top" src={episode.image.medium} alt={episode.name} />
       )}
       <Card.Body>
-        <h4>{episode.name}</h4>
+        <h2 className={styles.episodeName}>{episode.name}</h2>
         <small>
           Season {episode.season} Episode {episode.number}
         </small>

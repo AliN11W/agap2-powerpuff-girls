@@ -12,4 +12,8 @@ body {
     transform: none !important;
     width: auto !important;
   }
+
+  .sticky-outer-wrapper {
+    height: auto !important;
+  }
 }

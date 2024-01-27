@@ -1,17 +1,14 @@
 .myMasonryGrid {
-  display: -webkit-box; /* Not needed if autoprefixing */
-  display: -ms-flexbox; /* Not needed if autoprefixing */
   display: flex;
-  margin-left: -30px; /* gutter size offset */
+  margin-left: -30px;
   width: auto;
 }
 .myMasonryGrid_column {
-  padding-left: 30px; /* gutter size */
+  padding-left: 30px;
   background-clip: padding-box;
 }
 
-/* Style your items */
-.myMasonryGrid_column > div { /* change div to reference your elements you put in <Masonry> */
+.myMasonryGrid_column > div {
   margin-bottom: 1rem;
 }
 
@@ -20,4 +17,9 @@
   font-weight: bold;
   margin-bottom: 1rem;
   margin-top: 1rem;
+}
+
+.episodeName {
+  font-size: 1.3rem;
+  font-weight: bold;
 }

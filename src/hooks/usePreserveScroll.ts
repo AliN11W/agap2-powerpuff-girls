@@ -4,7 +4,9 @@ const usePreserveScroll = (key: string) => {
   useEffect(() => {
     const savedScrollPosition = sessionStorage.getItem(key);
     if (savedScrollPosition) {
-      window.scrollTo(0, parseInt(savedScrollPosition, 10));
+      setTimeout(() => {
+        window.scrollTo(0, parseInt(savedScrollPosition, 10));
+      }, 0)
     }
 
     const handleScroll = () => {

@@ -48,7 +48,7 @@ export default function ShowEpisodes({ episodes }: { episodes: Episode[] }) {
       <div className="text-center">
         {visibleEpisodes < episodes.length && (
           <Button
-            variant="outline-primary"
+            variant="outline-warning"
             className="w-100 mt-3"
             onClick={handleLoadMore}
           >

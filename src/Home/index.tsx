@@ -35,12 +35,12 @@ export default function Home() {
         <Card className="mb-5 border-0">
           <Card.Body>
             <Row>
-              <Col md="4">
-                <Sticky enabled={true} top={20} bottomBoundary="col-md-8">
+              <Col md="4" className="mb-4">
+                <Sticky enabled={true} top={20} bottomBoundary="episodes-col">
                   <img
                     src={ShowImage}
                     alt={show.name}
-                    className="img-fluid rounded"
+                    className="img-fluid rounded w-100"
                     // Setting width and height to prevent layout shift
                     width={400}
                     height={616}
@@ -64,8 +64,8 @@ export default function Home() {
                   </div>
                 </Sticky>
               </Col>
-              <Col md="8">
-                <div className="px-4">
+              <Col md="8" className="episodes-col">
+                <div>
                   {episodesLoading && <p>Loading episodes...</p>}
                   {Array.isArray(episodes) && (
                     <>
