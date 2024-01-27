@@ -4,7 +4,7 @@ import {
   SET_VISIBLE_EPISODES_NUMBER,
 } from "../../redux/episodes/episodesTypes";
 import Masonry from "react-masonry-css";
-import styles from "../styles.module.css";
+import styles from "./styles.module.css";
 import EpisodeCard from "./EpisodeCard";
 import { Button } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";

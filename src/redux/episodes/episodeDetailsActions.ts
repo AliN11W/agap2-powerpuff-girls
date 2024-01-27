@@ -1,11 +1,10 @@
-import { Dispatch } from 'redux';
-import { API_URL } from '../../constants';
+import { Dispatch } from "redux";
+import { API_URL } from "../../constants";
 import {
   FETCH_EPISODE_DETAILS_FAILURE,
   FETCH_EPISODE_DETAILS_REQUEST,
-  FETCH_EPISODE_DETAILS_SUCCESS
-} from './episodeDetailsTypes';
-
+  FETCH_EPISODE_DETAILS_SUCCESS,
+} from "./episodeDetailsTypes";
 
 export const fetchEpisodeDetails = (id: string) => {
   return async (dispatch: Dispatch) => {

@@ -4,7 +4,7 @@ import { Episode } from "../../redux/episodes/episodesTypes";
 import { limitText } from "../../utils/string";
 import sanitizeHtml from "sanitize-html";
 import { Link } from "react-router-dom";
-import styles from "../styles.module.css";
+import styles from "./styles.module.css";
 
 export default function EpisodeCard({ episode }: { episode: Episode }) {
   return (

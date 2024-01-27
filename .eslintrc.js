@@ -32,5 +32,7 @@ module.exports = {
     ],
     "rules": {
         "@typescript-eslint/no-unused-vars": "off",
+        // use double quotes
+        "quotes": ["error", "double"],
     }
 }
