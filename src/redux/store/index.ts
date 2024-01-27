@@ -2,10 +2,12 @@ import { applyMiddleware, combineReducers } from 'redux';
 import { configureStore } from '@reduxjs/toolkit';
 import { showReducer } from '../show/showReducer';
 import { episodesReducer } from '../episodes/episodeReducer';
+import { episodeDetailsReducer } from '../episodes/episodeDetailsReducer';
 
 const rootReducer = combineReducers({
   show: showReducer,
-  episodes: episodesReducer
+  episodes: episodesReducer,
+  episodeDetails: episodeDetailsReducer
 });
 
 export const store = configureStore({

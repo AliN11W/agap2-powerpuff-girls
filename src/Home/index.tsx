@@ -4,13 +4,14 @@ import sanitizeHtml from "sanitize-html";
 import { Badge, Button, Card, Col, Row } from "react-bootstrap";
 import { AppDispatch, RootState } from "../redux/store";
 import { fetchShow } from "../redux/show/showActions";
-import { fetchEpisodes } from "../redux/episodes/episodeActions";
+import { fetchEpisodes } from "../redux/episodes/episodesActions";
 import { limitText } from "../utils/string";
 import styles from "./styles.module.css";
 import Masonry from "react-masonry-css";
 import Sticky from "react-stickynode";
 import SeeMore from "../components/SeeMore";
 import { Link } from "react-router-dom";
+import usePreserveScroll from "../hooks/usePreserveScroll";
 
 const breakpointColumnsObj = {
   default: 3,
@@ -20,6 +21,7 @@ const breakpointColumnsObj = {
 };
 
 export default function Home() {
+  usePreserveScroll("home");
   const dispatch = useDispatch<AppDispatch>();
   const { show, loading } = useSelector((state: RootState) => state.show);
   const { episodes, loading: episodesLoading } = useSelector(
@@ -109,7 +111,7 @@ export default function Home() {
                                 }}
                               ></p>
                               <Link
-                                to={`/episode/${episode.id}`}
+                                to={`/episodes/${episode.id}`}
                                 className="btn btn-primary btn-sm"
                               >
                                 View Episode

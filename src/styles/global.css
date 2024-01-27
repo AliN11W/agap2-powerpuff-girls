@@ -1,0 +1,11 @@
+html {
+  scroll-behavior: auto !important;
+}
+
+@media (max-width: 768px){
+  .sticky-inner-wrapper {
+    position: static!important;
+    transform: none !important;
+    width: auto !important;
+  }
+}
