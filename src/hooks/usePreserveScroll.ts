@@ -2,13 +2,19 @@ import { useEffect } from 'react';
 
 const usePreserveScroll = (key: string) => {
   useEffect(() => {
-    // Restore scroll position
     const savedScrollPosition = sessionStorage.getItem(key);
     if (savedScrollPosition) {
       window.scrollTo(0, parseInt(savedScrollPosition, 10));
     }
 
-    // Save scroll position
+    const handleScroll = () => {
+      sessionStorage.setItem(key, window.scrollY.toString());
+    };
+
+    // Register scroll event listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+
+    // Save scroll position before unloading the page
     const handleBeforeUnload = () => {
       sessionStorage.setItem(key, window.scrollY.toString());
     };
@@ -16,11 +22,11 @@ const usePreserveScroll = (key: string) => {
     window.addEventListener('beforeunload', handleBeforeUnload);
 
     return () => {
+      // Cleanup
+      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('beforeunload', handleBeforeUnload);
-      // Optionally clear the saved position if you don't need it anymore
-      // sessionStorage.removeItem(key);
     };
-  }, [key]); // The effect will re-run only if key changes
+  }, [key]);
 };
 
 export default usePreserveScroll;

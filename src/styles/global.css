@@ -2,6 +2,10 @@ html {
   scroll-behavior: auto !important;
 }
 
+body {
+  height: auto;
+}
+
 @media (max-width: 768px){
   .sticky-inner-wrapper {
     position: static!important;

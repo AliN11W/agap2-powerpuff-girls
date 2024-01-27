@@ -7,7 +7,7 @@ export const fetchEpisodeDetails = (id: string) => {
   return async (dispatch: Dispatch) => {
     dispatch({ type: FETCH_EPISODE_DETAILS_REQUEST });
     try {
-      const episodes = await fetch(`${API_URL}/episodes/${id}}`);
+      const episodes = await fetch(`${API_URL}/episodes/${id}`);
       const episodesJson = await episodes.json();
       dispatch({ type: FETCH_EPISODE_DETAILS_SUCCESS, payload: episodesJson });
     } catch (error) {

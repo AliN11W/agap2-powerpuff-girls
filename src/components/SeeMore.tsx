@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import sanitizeHtml from "sanitize-html";
 
@@ -11,15 +11,15 @@ export default function SeeMore({
   limit: number;
   className?: string;
 }) {
-  const [showMore, setShowMore] = React.useState(false);
-  const [sanitizedText] = React.useState(() =>
+  const [showMore, setShowMore] = useState(false);
+  const [sanitizedText] = useState(() =>
     sanitizeHtml(text, {
       allowedTags: ["b", "em", "strong"],
       allowedAttributes: false,
       parseStyleAttributes: false,
     })
   );
-  const [pureText] = React.useState(() =>
+  const [pureText] = useState(() =>
     sanitizeHtml(text, {
       allowedTags: [],
       allowedAttributes: false,

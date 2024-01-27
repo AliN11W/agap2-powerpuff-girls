@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
 import { API_URL } from '../../constants';
-import { FETCH_EPISODES_FAILURE, FETCH_EPISODES_REQUEST, FETCH_EPISODES_SUCCESS } from './episodeTypes';
+import { FETCH_EPISODES_FAILURE, FETCH_EPISODES_REQUEST, FETCH_EPISODES_SUCCESS } from './episodesTypes';
 import { RootState } from '../store';
 
 export const fetchEpisodes = () => {
