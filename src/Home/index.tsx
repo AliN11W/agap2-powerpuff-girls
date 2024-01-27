@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import { shallowEqual, useDispatch, useSelector } from "react-redux";
-import { Button, Card, Col, Row } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import { AppDispatch, RootState } from "../redux/store";
 import { fetchShow } from "../redux/show/showActions";
 import { fetchEpisodes } from "../redux/episodes/episodesActions";

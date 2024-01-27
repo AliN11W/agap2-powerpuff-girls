@@ -45,6 +45,10 @@ export default function ShowEpisodes({ episodes }: { episodes: Episode[] }) {
           <EpisodeCard key={episode.id} episode={episode} />
         ))}
       </Masonry>
+
+      {/* We could've implemented the "Load More" button in Home/index.tsx for the sake of modularity.
+       * In that case, by updating the `visibleEpisodes` state, the whole component would re-render.
+       */}
       <div className="text-center">
         {visibleEpisodes < episodes.length && (
           <Button

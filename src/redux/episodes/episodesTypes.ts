@@ -3,21 +3,21 @@ export const FETCH_EPISODES_SUCCESS = 'FETCH_EPISODES_SUCCESS';
 export const FETCH_EPISODES_FAILURE = 'FETCH_EPISODES_FAILURE';
 export const SET_VISIBLE_EPISODES_NUMBER = 'SET_VISIBLE_EPISODES_NUMBER';
 
-export interface FetchEpisodesRequestAction {
+export type FetchEpisodesRequestAction = {
   type: typeof FETCH_EPISODES_REQUEST;
 }
 
-export interface FetchEpisodesSuccessAction {
+export type FetchEpisodesSuccessAction = {
   type: typeof FETCH_EPISODES_SUCCESS;
   payload: Episode[];
 }
 
-export interface FetchEpisodesFailureAction {
+export type FetchEpisodesFailureAction = {
   type: typeof FETCH_EPISODES_FAILURE;
   payload: string;
 }
 
-export interface SetVisibleEpisodesNumberAction {
+export type SetVisibleEpisodesNumberAction = {
   type: typeof SET_VISIBLE_EPISODES_NUMBER;
   payload: number;
 }
@@ -27,7 +27,7 @@ export type EpisodesActionTypes = FetchEpisodesRequestAction
   | FetchEpisodesFailureAction
   | SetVisibleEpisodesNumberAction;
 
-export interface EpisodesState {
+export type EpisodesState = {
   episodes: null | Episode[];
   visibleItems: number;
   loading: boolean;

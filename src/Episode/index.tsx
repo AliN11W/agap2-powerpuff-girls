@@ -7,7 +7,7 @@ import ArrowBack from "../assets/icons/arrow-left.svg";
 import sanitizeHtml from "sanitize-html";
 import { Col, Row } from "react-bootstrap";
 import { RESET_EPISODE_DETAILS } from "../redux/episodes/episodeDetailsTypes";
-import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import Skeleton from "react-loading-skeleton";
 
 export default function Episodes() {
   const { id } = useParams();
@@ -17,8 +17,7 @@ export default function Episodes() {
   );
 
   React.useEffect(() => {
-    // Redirect to 404 ideally
-    if (!id) return;
+    if (!id) return; // Redirect to 404 ideally
 
     dispatch(fetchEpisodeDetails(id));
 
@@ -65,6 +64,7 @@ export default function Episodes() {
               <h2>{episodeDetails.name}</h2>
               {loading && <Skeleton count={5} className="rounded" />}
               <p
+                // Remove all tags except <b>, <em> and <strong>
                 dangerouslySetInnerHTML={{
                   __html: sanitizeHtml(episodeDetails.summary, {
                     allowedTags: ["b", "em", "strong"],

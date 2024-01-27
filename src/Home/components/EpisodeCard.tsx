@@ -9,6 +9,7 @@ import styles from "../styles.module.css";
 export default function EpisodeCard({ episode }: { episode: Episode }) {
   return (
     <Card>
+      {/* Some episodes don't have images */}
       {episode.image !== null && (
         <Card.Img variant="top" src={episode.image.medium} alt={episode.name} />
       )}
@@ -19,6 +20,7 @@ export default function EpisodeCard({ episode }: { episode: Episode }) {
         </small>
         <p
           className="text-muted small"
+          // Sanitize HTML to prevent XSS attacks
           dangerouslySetInnerHTML={{
             __html: limitText(
               sanitizeHtml(episode.summary, {

@@ -12,6 +12,8 @@ export default function SeeMore({
   className?: string;
 }) {
   const [showMore, setShowMore] = useState(false);
+
+  // The text that user sees
   const [sanitizedText] = useState(() =>
     sanitizeHtml(text, {
       allowedTags: ["b", "em", "strong"],
@@ -19,6 +21,8 @@ export default function SeeMore({
       parseStyleAttributes: false,
     })
   );
+
+  // The text that we use to check if it's already short enough
   const [pureText] = useState(() =>
     sanitizeHtml(text, {
       allowedTags: [],
@@ -27,6 +31,7 @@ export default function SeeMore({
     })
   );
 
+  // Is the text already short enough? Return it as is
   if (pureText.length <= limit) {
     return (
       <p

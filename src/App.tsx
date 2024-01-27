@@ -11,16 +11,16 @@ import { store } from "./redux/store";
 
 function App() {
   return (
-    <ReduxProvider store={store}>
-      <div className="container mt-5">
+    <main className="container mt-5">
+      <ReduxProvider store={store}>
         <Router>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/episodes/:id" element={<Episode />} />
           </Routes>
         </Router>
-      </div>
-    </ReduxProvider>
+      </ReduxProvider>
+    </main>
   );
 }
 
