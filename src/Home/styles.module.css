@@ -1,0 +1,23 @@
+.myMasonryGrid {
+  display: -webkit-box; /* Not needed if autoprefixing */
+  display: -ms-flexbox; /* Not needed if autoprefixing */
+  display: flex;
+  margin-left: -30px; /* gutter size offset */
+  width: auto;
+}
+.myMasonryGrid_column {
+  padding-left: 30px; /* gutter size */
+  background-clip: padding-box;
+}
+
+/* Style your items */
+.myMasonryGrid_column > div { /* change div to reference your elements you put in <Masonry> */
+  margin-bottom: 1rem;
+}
+
+.showTitle {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+}

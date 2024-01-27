@@ -1,0 +1,10 @@
+@import './variables.scss';
+@import '~bootstrap/scss/bootstrap';
+
+@media (max-width: 768px){
+  .sticky-inner-wrapper {
+    position: static!important;
+    transform: none !important;
+    width: auto !important;
+  }
+}

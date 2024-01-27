@@ -1,15 +1,29 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import sanitizeHtml from "sanitize-html";
-import { Badge, Card, Col, Row } from "react-bootstrap";
+import { Badge, Button, Card, Col, Row } from "react-bootstrap";
 import { AppDispatch, RootState } from "../redux/store";
 import { fetchShow } from "../redux/show/showActions";
 import { fetchEpisodes } from "../redux/episodes/episodeActions";
+import { limitText } from "../utils/string";
+import styles from "./styles.module.css";
+import Masonry from "react-masonry-css";
+import Sticky from "react-stickynode";
+import SeeMore from "../components/SeeMore";
+
+const breakpointColumnsObj = {
+  default: 3,
+  1100: 2,
+  700: 2,
+  500: 1,
+};
 
 export default function Home() {
   const dispatch = useDispatch<AppDispatch>();
   const { show, loading } = useSelector((state: RootState) => state.show);
-  const { episodes } = useSelector((state: RootState) => state.episodes);
+  const { episodes, loading: episodesLoading } = useSelector(
+    (state: RootState) => state.episodes
+  );
 
   useEffect(() => {
     dispatch(fetchShow());
@@ -19,40 +33,93 @@ export default function Home() {
   return (
     <div>
       {show && (
-        <Card>
+        <Card className="mb-5 border-0">
           <Card.Body>
             <Row>
               <Col md="4">
-                <img
-                  src={show.image.original}
-                  alt={show.name}
-                  className="img-fluid rounded"
-                  // Setting width and height to prevent layout shift
-                  width={680}
-                  height={1000}
-                />
+                <Sticky enabled={true} top={20} bottomBoundary="col-md-8">
+                  <img
+                    src={show.image.original}
+                    alt={show.name}
+                    className="img-fluid rounded"
+                    // Setting width and height to prevent layout shift
+                    width={400}
+                    height={616}
+                  />
 
-                <div className="mt-2">
-                  <ul className="list-unstyled">
-                    {show.genres.map((genre) => (
-                      <Badge key={genre} className="me-2" bg="primary" as="li">
-                        {genre}
-                      </Badge>
-                    ))}
-                  </ul>
-                </div>
+                  <h1 className={styles.showTitle}>{show.name}</h1>
+
+                  <SeeMore
+                    text={show.summary}
+                    limit={230}
+                    className="text-muted small"
+                  />
+
+                  <div className="mt-2">
+                    <ul className="list-unstyled">
+                      {show.genres.map((genre) => (
+                        <Badge
+                          key={genre}
+                          className="me-2"
+                          bg="primary"
+                          as="li"
+                        >
+                          {genre}
+                        </Badge>
+                      ))}
+                    </ul>
+                  </div>
+                </Sticky>
               </Col>
               <Col md="8">
-                <h2>{show.name}</h2>
-                <p
-                  dangerouslySetInnerHTML={{
-                    __html: sanitizeHtml(show.summary, {
-                      allowedTags: ["p", "b", "em", "strong"],
-                      allowedAttributes: false,
-                      parseStyleAttributes: false,
-                    }),
-                  }}
-                ></p>
+                <div className="px-4">
+                  {episodesLoading && <p>Loading episodes...</p>}
+                  {episodes && (
+                    <Masonry
+                      breakpointCols={breakpointColumnsObj}
+                      className={styles.myMasonryGrid}
+                      columnClassName={styles.myMasonryGrid_column}
+                    >
+                      {episodes.map((episode) => (
+                        <div key={episode.id} className={styles.gridItem}>
+                          <Card>
+                            {episode.image !== null && (
+                              <Card.Img
+                                variant="top"
+                                src={episode.image.medium}
+                              />
+                            )}
+                            <Card.Body>
+                              <h5>{episode.name}</h5>
+                              <small>
+                                Season {episode.season} Episode {episode.number}
+                              </small>
+                              <p
+                                className="text-muted small"
+                                dangerouslySetInnerHTML={{
+                                  __html: limitText(
+                                    sanitizeHtml(episode.summary, {
+                                      allowedTags: [],
+                                      allowedAttributes: false,
+                                      parseStyleAttributes: false,
+                                    }),
+                                    100
+                                  ),
+                                }}
+                              ></p>
+                              <Button
+                                className="w-100"
+                                variant="outline-primary"
+                              >
+                                Go somewhere
+                              </Button>
+                            </Card.Body>
+                          </Card>
+                        </div>
+                      ))}
+                    </Masonry>
+                  )}
+                </div>
               </Col>
             </Row>
           </Card.Body>

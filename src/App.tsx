@@ -1,7 +1,6 @@
 import React from "react";
 
-import "./App.css";
-import "bootstrap/dist/css/bootstrap.min.css";
+import "./styles/App.scss";
 
 import { Provider as ReduxProvider } from "react-redux";
 import { BrowserRouter as Router, Link, Route, Routes } from "react-router-dom";
